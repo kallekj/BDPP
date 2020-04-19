@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry} 
+\usepackage{verbatim}
+
+
+\title{BDPP Lab 3 \\ Kubernetes}
+\author{Karl-Johan Djervbrant}
+
+% Hide section numbering
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\begin{document}
+
+    \maketitle
+
+    \section{Answers to Task 1}
+    \begin{enumerate}
+        \item a) Describe differences between master node and worker nodes? \\
+        The master coordinates the cluster and the nodes are the workers which run the applications.
+        \\\\
+        b) What version of minikube is used in the tutorial? \\
+        Minikube version: v1.8.1
+        \item a) Describe kubectl? \\
+        Kubectl is the commandline interface used to control and manage the cluster.
+        \\\\
+        b) What is the output of \texttt{kubectl get nodes}?\\\\
+        \begin{tabular}{lllll}
+            NAME & STATUS & ROLES & AGE & VERSION \\
+            minikube & Ready & master & 12m & v1.17.3
+        \end{tabular}
+        \\\\
+        c) What is the ouput of \texttt{kubectl get deployments}\\\\
+        \begin{tabular}{lllll}
+            NAME & STATUS & UP-TO-DATE & AVAILABLE & AGE \\
+            kubernetes-bootcamp & 1/1 & 1 & 1 & 61s
+        \end{tabular}
+        \item a) What is a pod, describe its entities? \\
+        Pods run inside the Kubernetes application and is the basic execution unit and can be controlled via 
+        the API. It's like Docker container and can be services such as shared storage and networking.
+        \\\\
+        b) What information do the \texttt{kubectl describe pods} command give? \\
+        It returns information such as, name, starttime, ip (server address), the running image etc.
+        \item a) Describe what a service is in Kubernetes? \\
+        A service is a abstraction layer which enables the user to expose a node ip to the cluster. 
+        \\\\
+        b) What do the \texttt{kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080} command do? \\
+        It uses NAT to expose a service on a set port, it enables a service to be accessed from outside
+        the cluster. In this case it exposes the kubernetes-bootcamp on port \texttt{8080}.
+        \item a) How do labels and Label Selector objects relate to a Service? \\
+        You can set a label on your pod and interact with it via the label instead. You can delete a service with the 
+        \texttt{-l} flag and then enter the label to delete that service.
+        \\\\
+        b) What is the output \texttt{kubectl get rs} command?\\
+        \begin{tabular}{lllll}
+            NAME & DESIRED & CURRENT & READY & AGE \\
+            kubernetes-bootcamp-765bf4c7b4 & 1 & 1 & 1 & 2m5s
+        \end{tabular}
+        \\
+        This is the ReplicaSet.
+        \item 
+    \end{enumerate}
+\end{document}
