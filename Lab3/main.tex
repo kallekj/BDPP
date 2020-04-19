@@ -58,13 +58,16 @@
         You can set a label on your pod and interact with it via the label instead. You can delete a service with the 
         \texttt{-l} flag and then enter the label to delete that service.
         \\\\
-        b) What is the output \texttt{kubectl get rs} command?\\
+        b) What is the output \texttt{kubectl get rs} command?\\\\
         \begin{tabular}{lllll}
             NAME & DESIRED & CURRENT & READY & AGE \\
             kubernetes-bootcamp-765bf4c7b4 & 1 & 1 & 1 & 2m5s
         \end{tabular}
-        \\
+        \\\\
         This is the ReplicaSet.
-        \item 
+        \item a) Describe rolling updates in Kubernetes? \\
+        It enables the user to update the deployments (pods) without downtime.
+        \item b) Whats does the \texttt{kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2} command do? \\
+        It updates the image of the pods to version 2.
     \end{enumerate}
 \end{document}
